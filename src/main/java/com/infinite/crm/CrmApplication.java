@@ -21,7 +21,6 @@ import com.infinite.crm.service.Email;
 @EnableDiscoveryClient
 public class CrmApplication {
 	
-	
 	@Autowired
 	private Email emailService;
 
