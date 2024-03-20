@@ -39,6 +39,7 @@ public class CrmApplication {
 		}
 	}
 
+	
 	@Scheduled(cron = "0 */2 * ? * *")
 	@EventListener(ApplicationReadyEvent.class)
 	public void email() {
