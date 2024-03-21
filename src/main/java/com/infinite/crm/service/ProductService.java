@@ -15,32 +15,32 @@ public class ProductService {
 	ProductRepository productRepository;
 
 	public Products adduser(Products newProduct) {
-		// TODO Auto-generated method stub
+
 		return productRepository.save(newProduct);
 	}
 
 	public List<Products> productList() {
-		// TODO Auto-generated method stub
+
 		return productRepository.findAll();
 	}
 
 	public Object findproduct(Long id) {
-		// TODO Auto-generated method stub
+
 		return productRepository.findById(id);
 	}
 
 	public boolean exist(Long id) {
-		// TODO Auto-generated method stub
+
 		return productRepository.existsById(id);
 	}
 
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+
 		productRepository.deleteById(id);
 	}
 
-	public Products findById(Long id,Products newProduct) {
-		// TODO Auto-generated method stub
+	public Products findById(Long id, Products newProduct) {
+
 		return productRepository.findById(id).map(product -> {
 			product.setPname(newProduct.getPname());
 			product.setRating(newProduct.getRating());
@@ -51,7 +51,7 @@ public class ProductService {
 	}
 
 	public Products productById(Long id) {
-		// TODO Auto-generated method stub
+
 		return productRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 	}
 

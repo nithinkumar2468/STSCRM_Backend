@@ -15,22 +15,18 @@ public class OrdersTestingService {
 	private OrderTestingRepository Repo;
 
 	public OrdersTestingClass addOrders(OrdersTestingClass newOrder) {
-		// TODO Auto-generated method stub
 		return Repo.save(newOrder);
 	}
 
 	public List<OrdersTestingClass> findOrders() {
-		// TODO Auto-generated method stub
 		return Repo.findAll();
 	}
 
 	public OrdersTestingClass findOrderbyId(int id) {
-		// TODO Auto-generated method stub
 		return Repo.findById(id).get();
 	}
 
 	public OrdersTestingClass updateOrder(int id, OrdersTestingClass newOrder) {
-		// TODO Auto-generated method stub
 		return Repo.findById(id).map(order->{
 			order.setPname(newOrder.getPname());
 			order.setAddress(newOrder.getAddress());

@@ -39,8 +39,7 @@ public class UserAddressService {
 	 * method stub return repo.save(newUser); }
 	 */	
 	
-	public UserAddress saveAddress(String useremail, UserAddressDTO newUser) {
-		// TODO Auto-generated method stub
+	public UserAddress saveAddress(String useremail, UserAddressDTO newUser) {	 
 		User email=userRepo.findByEmail(useremail);
 		UserAddress address=new UserAddress();
 		address.setUsers(email);
@@ -67,32 +66,23 @@ public class UserAddressService {
 	 * TaskDTO.class)).collect(Collectors.toList()); }
 	 */
 	
-	public List<UserAddressDTO> findAllAddresses(String useremail) {
-		// TODO Auto-generated method stub
+	public List<UserAddressDTO> findAllAddresses(String useremail) {	 
 		User email=userRepo.findByEmail(useremail);
 		
 		List<UserAddress> addresses=repo.findAllByUsersEmail(useremail);
 		
 		return addresses.stream().map(task -> modelMapper.map(task, UserAddressDTO.class)).collect(Collectors.toList());
-	}
-	
-		
-	
-	
+	}	
 	/*
 	 * public List<UserAddress> findAllAdresses() { // TODO Auto-generated method
 	 * stub return repo.findAll(); }
 	 */
 
-	
-
 	public void deleteAddress(Long id) {
-		// TODO Auto-generated method stub
 		repo.deleteById(id);
 	}
 
 	public UserAddress getuseraddressbyid(Long id) {
-		// TODO Auto-generated method stub
 		return repo.findById(id).get();
 	}
 	

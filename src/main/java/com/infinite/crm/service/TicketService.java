@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infinite.crm.exceptions.UserNotFoundException;
-import com.infinite.crm.model.AdminTickets;
 import com.infinite.crm.model.Ticket;
 import com.infinite.crm.model.TicketDTO;
 import com.infinite.crm.model.User;
@@ -32,7 +31,6 @@ public class TicketService {
 	 * ticketRepository.save(newTicket); }
 	 */	
 	public Ticket addTicket(String useremail, TicketDTO newTicket) {
-		// TODO Auto-generated method stub
 		User email=userRepo.findByEmail(useremail);
 		Ticket newT=new Ticket();
 		newT.setUsers(email);
@@ -49,7 +47,6 @@ public class TicketService {
 	 */
 	
 	public List<TicketDTO> findAllTickets(String useremail) {
-		// TODO Auto-generated method stub
         User email=userRepo.findByEmail(useremail);
 		
 		List<Ticket> tickets=ticketRepository.findAllByUsersEmail(useremail);
@@ -58,14 +55,14 @@ public class TicketService {
 	}
 
 	/*
-	 * public Ticket findTicket(Long tid) { // TODO Auto-generated method stub
+	 * public Ticket findTicket(Long tid) {  
 	 * return ticketRepository.findById(tid).orElseThrow(() -> new
 	 * UserNotFoundException(tid)); }
 	 */
 
 	/*
 	 * public TicketDTO findTicketById(String useremail, Long tid) throws Exception
-	 * { // TODO Auto-generated method stub User
+	 * {   User
 	 * email=userRepo.findByEmail(useremail);
 	 * 
 	 * Ticket ticket=ticketRepository.findById(tid).get();
@@ -75,13 +72,11 @@ public class TicketService {
 	 * TicketDTO.class); }
 	 */
 	
-	public TicketDTO findTicketById(Long tid) {
-		// TODO Auto-generated method stub
+	public TicketDTO findTicketById(Long tid) { 
 		return modelMapper.map(ticketRepository.findById(tid).get(),TicketDTO.class);
 	}
 
 	public TicketDTO updateTicket(Long tid, TicketDTO newTicket) {
-		// TODO Auto-generated method stub
 		return modelMapper.map(ticketRepository.findById(tid).map(ticket -> {
 			ticket.setUsername(newTicket.getUsername());
 			ticket.setEmail(newTicket.getEmail());
@@ -92,20 +87,15 @@ public class TicketService {
 	}
 
 	public boolean exist(Long tid) {
-		// TODO Auto-generated method stub
 		return ticketRepository.existsById(tid);
-
 	}
 
 	public void deleteTicket(Long tid) {
-		// TODO Auto-generated method stub
 		ticketRepository.deleteById(tid);
 	}
 
 	public List<TicketDTO> findAllTicketsforAdmin() {
-		// TODO Auto-generated method stub
-		
-		List<Ticket> tickets=ticketRepository.findAll();
+		 List<Ticket> tickets=ticketRepository.findAll();
 		
 		return tickets.stream().map(ticket -> modelMapper.map(ticket, TicketDTO.class)).collect(Collectors.toList());
 	}

@@ -1,9 +1,5 @@
 package com.infinite.crm.model;
 
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -111,7 +107,6 @@ public class Ticket {                                   // ticket pojo
 
 	public Ticket() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	}

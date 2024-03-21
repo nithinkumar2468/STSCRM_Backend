@@ -96,6 +96,5 @@ public class Orders {
 
 	public Orders() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

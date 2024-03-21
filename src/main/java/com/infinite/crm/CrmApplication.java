@@ -31,12 +31,9 @@ public class CrmApplication {
 
 	public void email(Ticket newT) {
 		if (newT.getStatus().equalsIgnoreCase("done")) {
-			System.out.println(newT.getStatus());
 			email();
-			return;
 		} else {
 			mailtouser();
-			return;
 		}
 	}
 

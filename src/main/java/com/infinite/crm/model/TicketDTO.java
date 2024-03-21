@@ -55,7 +55,6 @@ public class TicketDTO {
 	}
 	public TicketDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }

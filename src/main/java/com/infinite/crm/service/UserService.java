@@ -27,23 +27,20 @@ public class UserService {
 	  }
 
 	public User save(User newUser) {
-		// TODO Auto-generated method stub
+		 
 		return userRepository.save(newUser);
 	}
 
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
 
 	public User findById1(Long id) {
-		// TODO Auto-generated method stub
 		return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 	}
 
 
 	public User findById2(Long id, User newUser) {
-		// TODO Auto-generated method stub
 		return userRepository.findById(id).map(user -> {
 			user.setName(newUser.getName());
 			user.setPassword(newUser.getPassword());
@@ -54,7 +51,6 @@ public class UserService {
 	}
 	
 	public User findById3(Long id, User newUser) {
-		// TODO Auto-generated method stub
 		return userRepository.findById(id).map(user ->{
 			user.setMobileno(newUser.getMobileno());
 			return userRepository.save(user);
@@ -62,12 +58,10 @@ public class UserService {
 	}
 
 	public boolean existsById(Long id) {
-		// TODO Auto-generated method stub
 		return userRepository.existsById(id);
 	}
 
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
 		userRepository.deleteById(id);
 	} 
 

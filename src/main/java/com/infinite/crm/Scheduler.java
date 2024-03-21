@@ -14,7 +14,6 @@ public class Scheduler {
 		{
 			String s=newT.getStatus();
 			email(s);
-			return ;
 		}
 		
 	}

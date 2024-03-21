@@ -26,7 +26,6 @@ public class UserAddressController {
 
 	@PostMapping("/{useremail}/address")
 	UserAddress newUserAddress(@PathVariable String useremail, @RequestBody UserAddressDTO newUser) {
-		System.out.println("1");
 		return service.saveAddress(useremail, newUser);
 	}
 

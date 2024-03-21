@@ -9,7 +9,6 @@ public class OrdersDTO {
 	private String ordereddate;
 	public OrdersDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public OrdersDTO(Long orderid, String pname, String totalprice, String address, String ordereddate) {
 		super();
