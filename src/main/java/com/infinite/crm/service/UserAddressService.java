@@ -27,16 +27,16 @@ public class UserAddressService {
 	
 	
 	/*
-	 * public Task saveTasks(long userid, TaskDTO taskDto) { // TODO Auto-generated
-	 * method stub Users Id = userRepo.findById(userid).orElseThrow(() -> new
+	 * public Task saveTasks(long userid, TaskDTO taskDto) { 
+	 *  Users Id = userRepo.findById(userid).orElseThrow(() -> new
 	 * UserNotFoundException(userid)); Task task = new Task();
 	 * task.setTaskname(taskDto.getTaskname()); task.setUsers(Id); return
 	 * taskRepo.save(task); }
 	 */
 	
 	/*
-	 * public UserAddress saveAddress(UserAddress newUser) { // TODO Auto-generated
-	 * method stub return repo.save(newUser); }
+	 * public UserAddress saveAddress(UserAddress newUser) { 
+	 *  return repo.save(newUser); }
 	 */	
 	
 	public UserAddress saveAddress(String useremail, UserAddressDTO newUser) {	 
@@ -55,8 +55,7 @@ public class UserAddressService {
 	
 	
 	/*
-	 * public List<TaskDTO> getAllTasks(long userid) { // TODO Auto-generated method
-	 * stub 
+	 * public List<TaskDTO> getAllTasks(long userid) { 
 	 * Users Id = userRepo.findById(userid).orElseThrow(() -> new
 	 * UserNotFoundException(userid));
 	 * 
@@ -74,8 +73,7 @@ public class UserAddressService {
 		return addresses.stream().map(task -> modelMapper.map(task, UserAddressDTO.class)).collect(Collectors.toList());
 	}	
 	/*
-	 * public List<UserAddress> findAllAdresses() { // TODO Auto-generated method
-	 * stub return repo.findAll(); }
+	 * public List<UserAddress> findAllAdresses() { return repo.findAll(); }
 	 */
 
 	public void deleteAddress(Long id) {
