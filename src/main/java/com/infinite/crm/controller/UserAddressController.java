@@ -17,7 +17,7 @@ import com.infinite.crm.model.UserAddressDTO;
 import com.infinite.crm.service.UserAddressService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://master.dfhb2sx7j66q1.amplifyapp.com")
 @RequestMapping("api/n1")
 public class UserAddressController {
 
