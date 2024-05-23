@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.infinite.crm.model.Products;
 
-@FeignClient(name = "products2")
-@RibbonClient(name="products2")
+//@FeignClient(name = "products2",url="13.200.250.135:8081")
+@FeignClient(name = "products2",url="https://stsproducts2-production.up.railway.app")
+//@FeignClient(name = "products2")
+@RibbonClient(name = "products2")
 public interface Products2ServiceProxy {
 
 	@GetMapping("/products2")
 	List<Products> getAllProducts();
-	
+
 	@GetMapping("/product2/{id}")
 	public Products getProductById(@PathVariable Long id);
 }

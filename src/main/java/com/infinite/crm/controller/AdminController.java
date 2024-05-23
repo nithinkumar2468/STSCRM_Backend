@@ -1,6 +1,7 @@
 package com.infinite.crm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,13 +12,11 @@ import com.infinite.crm.model.Admin;
 import com.infinite.crm.model.LoginMessage;
 import com.infinite.crm.service.AdminService;
 
-
-
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://master.dfhb2sx7j66q1.amplifyapp.com")
 @RequestMapping("api/n2")
 public class AdminController {
-
+	
 	@Autowired
 	private AdminService adminService;
 
@@ -37,5 +36,21 @@ public class AdminController {
 			return new LoginMessage("adminname not exist", false);
 		}
 	}
+	
+	/*
+	 * @PostMapping("/register") public Admin createUser(@RequestBody AdminDTO
+	 * admin) { return adminService.saveAdmin(admin); }
+	 * 
+	 * @PostMapping("/login") public ResponseEntity<JWTAuthResponse>
+	 * loginUser(@RequestBody LoginDTO loginDto){ Authentication authentication=
+	 * authenticationManager.authenticate( new
+	 * UsernamePasswordAuthenticationToken(loginDto.getEmail(),loginDto.getPassword(
+	 * ))); System.out.println(authentication);
+	 * SecurityContextHolder.getContext().setAuthentication(authentication);
+	 * 
+	 * String token=provider.generateToken(authentication);
+	 * 
+	 * return ResponseEntity.ok(new JWTAuthResponse(token)); }
+	 */
 
 }

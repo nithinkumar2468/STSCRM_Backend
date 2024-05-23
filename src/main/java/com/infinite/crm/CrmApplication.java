@@ -18,7 +18,7 @@ import com.infinite.crm.service.Email;
 @SpringBootApplication
 @EnableScheduling
 @EnableFeignClients("com.infinite.crm")
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class CrmApplication {
 	
 	
