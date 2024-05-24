@@ -51,18 +51,20 @@ public class CrmApplication {
 		for (Ticket ticket : tickets) {
 			if (ticket.getStatus().equalsIgnoreCase("done")) {
 				if (ticket.getEmail() != null) {
-					emailService.sendEmail(ticket.getEmail(), "Your Issue is Resolved..! - " + ticket.getTid(),
-							"Dear " + ticket.getUsername() + "," + '\n'
+					emailService.sendEmail(ticket.getEmail(), "Your Issue is Resolved -- " + ticket.getTid(),
+							"Dear " + ticket.getUsername() + "," + '\n' + '\n'
 									+ "This is to notify you that your issue regarding " + ticket.getIssue()
-									+ " has been successfully Resolved..!"+ '\n'
-									+"Regards,"+ '\n'
-									+"admin-helpdesk");
+									+ " has been successfully Resolved..!" + '\n' + '\n' + '\n' + "Regards," + '\n'
+									+ "admin-helpdesk");
 				}
 			} else if (ticket.getStatus().equalsIgnoreCase("active")) {
 				List<Admin> admins = adminRepo.findAll();
 				List<String> adminEmails = admins.stream().map(Admin::getEmail).collect(Collectors.toList());
-				emailService.sendEmailToMultipleRecipients(adminEmails, "Ticket is Pending to resolve",
-						"Please Resolve the ticket..!");
+				emailService.sendEmailToMultipleRecipients(adminEmails,
+						"Ticket is Pending to resolve -- " + ticket.getTid(),
+						"Dear admin ," + '\n' + "Please Resolve the issue regarding " + ticket.getIssue() + " on "
+								+ ticket.getRaiseddate() + " by the mail-Id:" + ticket.getEmail() + '\n' + '\n'
+								+ "Regards," + '\n' + "capstone-crm");
 			}
 		}
 	}
