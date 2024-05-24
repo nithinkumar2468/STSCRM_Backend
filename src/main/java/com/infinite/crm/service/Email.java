@@ -1,5 +1,7 @@
 package com.infinite.crm.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,12 @@ public class Email {
         mailSender.send(mail);
 
         logger.info("Mail Sent Successfully");
+    }
+    
+    public void sendEmailToMultipleRecipients(List<String> toEmails, String subject, String body) {
+        for (String email : toEmails) {
+            sendEmail(email, subject, body);
+        }
     }
 
 }

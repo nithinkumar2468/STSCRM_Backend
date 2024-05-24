@@ -75,6 +75,6 @@ public class UserController {
 			throw new UserNotFoundException(id);
 		}
 		userService.deleteById(id);
-		return "User with id " + id + " has been deleted success.";
+		return "User with id " + id + " has been deleted success..!";
 	}
 }

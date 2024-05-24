@@ -90,6 +90,6 @@ public class ProductsController {
 			throw new UserNotFoundException(id);
 		}
 		productService.delete(id);
-		return "User with id " + id + " has been deleted success.";
+		return "Product with id " + id + " has been deleted successfully..!";
 	}
 }

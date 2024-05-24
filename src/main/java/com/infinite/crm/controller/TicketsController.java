@@ -74,6 +74,6 @@ public class TicketsController {
 			throw new UserNotFoundException(tid);
 		}
 		ticketService.deleteTicket(tid);
-		return "User with id " + tid + " has been deleted success.";
+		return "Ticket with id " + tid + " has been deleted successfully..!";
 	}
 }
