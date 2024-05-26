@@ -54,7 +54,7 @@ public class CrmApplication {
 					emailService.sendEmail(ticket.getEmail(), "Your Issue is Resolved -- " + ticket.getTid(),
 							"Dear " + ticket.getUsername() + "," + '\n' + '\n'
 									+ "This is to notify you that your issue regarding " + ticket.getIssue()
-									+ " has been successfully Resolved..!" + '\n' + '\n' + '\n' + "Regards," + '\n'
+									+ " has been successfully Resolved..!" + '\n' + '\n' + "Regards," + '\n'
 									+ "admin-helpdesk");
 				}
 			} else if (ticket.getStatus().equalsIgnoreCase("active")) {
@@ -63,7 +63,7 @@ public class CrmApplication {
 				emailService.sendEmailToMultipleRecipients(adminEmails,
 						"Ticket is Pending to resolve -- " + ticket.getTid(),
 						"Dear admin ," + '\n' + "Please Resolve the issue regarding " + ticket.getIssue() + " on "
-								+ ticket.getRaiseddate() + " by the mail-Id:" + ticket.getEmail() + '\n' + '\n'
+								+ ticket.getRaiseddate() + " by the mail-Id: " + ticket.getEmail() + '\n' + '\n'
 								+ "Regards," + '\n' + "capstone-crm");
 			}
 		}
