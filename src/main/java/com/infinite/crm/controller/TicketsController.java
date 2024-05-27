@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.infinite.crm.exceptions.UserNotFoundException;
 import com.infinite.crm.model.Ticket;
 import com.infinite.crm.model.TicketDTO;
+import com.infinite.crm.service.Email;
 import com.infinite.crm.service.TicketService;
-
 
 @RestController
 @CrossOrigin("https://master.dfhb2sx7j66q1.amplifyapp.com")
@@ -27,37 +27,40 @@ import com.infinite.crm.service.TicketService;
 public class TicketsController {
 
 	@Autowired
+	private Email emailService;
+
+	@Autowired
 	private TicketService ticketService;
-	
+
 	@PostMapping("/{useremail}/ticket")
-	Ticket newTicket(@PathVariable String useremail,@RequestBody TicketDTO newTicket) {
-		
-		LocalDateTime myDateObj = LocalDateTime.now();   
-	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm a");  
-	    
-	    String formattedDate = myDateObj.format(myFormatObj);  
-	    
-	    newTicket.setRaiseddate(formattedDate);
-	    
-		return ticketService.addTicket(useremail,newTicket);
+	Ticket newTicket(@PathVariable String useremail, @RequestBody TicketDTO newTicket) {
+
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm a");
+
+		String formattedDate = myDateObj.format(myFormatObj);
+
+		newTicket.setRaiseddate(formattedDate);
+
+		return ticketService.addTicket(useremail, newTicket);
 	}
-	
+
 	@GetMapping("/{useremail}/tickets")
 	List<TicketDTO> getAllTicketsbyemail(@PathVariable String useremail) {
 		return ticketService.findAllTickets(useremail);
 	}
-	
+
 	@GetMapping("/tickets")
 	List<TicketDTO> getAllTickets() {
 		return ticketService.findAllTicketsforAdmin();
 	}
-	
+
 	/*
 	 * @GetMapping("/{useremail}/ticket/{tid}") TicketDTO
 	 * getTicketById(@PathVariable String useremail,@PathVariable Long tid) throws
 	 * Exception { return ticketService.findTicketById(useremail,tid); }
 	 */
-	
+
 	@GetMapping("/ticket/{tid}")
 	TicketDTO getTicketById(@PathVariable Long tid) throws Exception {
 		return ticketService.findTicketById(tid);
@@ -65,7 +68,18 @@ public class TicketsController {
 
 	@PutMapping("/ticket/{tid}")
 	TicketDTO updateTicket(@RequestBody TicketDTO newTicket, @PathVariable Long tid) {
-		return ticketService.updateTicket(tid,newTicket);
+
+		if (newTicket.getStatus().equalsIgnoreCase("done")) {
+			if (newTicket.getEmail() != null) {
+				emailService.sendEmail(newTicket.getEmail(), "Your Issue is Resolved -- " + newTicket.getTid(),
+						"Dear " + newTicket.getUsername() + "," + '\n' + '\n'
+								+ "This is to notify you that your issue regarding " + newTicket.getIssue()
+								+ " has been successfully Resolved..!" + '\n' + '\n' + "Regards," + '\n'
+								+ "admin-helpdesk");
+			}
+		}
+
+		return ticketService.updateTicket(tid, newTicket);
 	}
 
 	@DeleteMapping("/ticket/{tid}")

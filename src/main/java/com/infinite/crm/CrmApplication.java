@@ -44,20 +44,12 @@ public class CrmApplication {
 		SpringApplication.run(CrmApplication.class, args);
 	}
 
-	@Scheduled(cron = "0 */10 * ? * *")
+	@Scheduled(cron = "0 */2 * ? * *")
 	public void emailScheduler() {
 		List<Ticket> tickets = ticketRepo.findAll();
 
 		for (Ticket ticket : tickets) {
-			if (ticket.getStatus().equalsIgnoreCase("done")) {
-				if (ticket.getEmail() != null) {
-					emailService.sendEmail(ticket.getEmail(), "Your Issue is Resolved -- " + ticket.getTid(),
-							"Dear " + ticket.getUsername() + "," + '\n' + '\n'
-									+ "This is to notify you that your issue regarding " + ticket.getIssue()
-									+ " has been successfully Resolved..!" + '\n' + '\n' + "Regards," + '\n'
-									+ "admin-helpdesk");
-				}
-			} else if (ticket.getStatus().equalsIgnoreCase("active")) {
+			if (ticket.getStatus().equalsIgnoreCase("active")) {
 				List<Admin> admins = adminRepo.findAll();
 				List<String> adminEmails = admins.stream().map(Admin::getEmail).collect(Collectors.toList());
 				emailService.sendEmailToMultipleRecipients(adminEmails,
