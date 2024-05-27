@@ -51,12 +51,11 @@ public class OrdersController {
 				+ '\n' + '\n' 
 				+ "Order Number: " + newOrders.getOrderid() + '\n' 
 				+ "Order Date: "+ newOrders.getOrdereddate() + '\n' + '\n' 
-				+ '\n' + '\n' 
-				+ "Total Amount: "+newOrders.getTotalprice()
-				+ "We will notify you once your order has been shipped. If you have any questions or need further assistance, please visit our [Customer Care] for FAQs and guides.\r\n"
-				+ "\r\n"
-				+ "Thank you for shopping with us!\r\n"
-				+ "\r\n"
+				+ "Total Amount: "+newOrders.getTotalprice()+ '\n' + '\n' 
+				+ "We will notify you once your order has been shipped. If you have any questions or need further assistance, please visit our [Customer Care] for FAQs and guides."
+				+ '\n'
+				+ "Thank you for shopping with us!"
+				+ '\n'
 				+ "Best regards,"+'\n'
 				+ "CRM App");
 		return service.addOrders(useremail,newOrders);
