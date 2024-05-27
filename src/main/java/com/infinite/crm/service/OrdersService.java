@@ -25,9 +25,6 @@ public class OrdersService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@Autowired
-	private Email emailService;
-
 	public Orders addOrders(String useremail, OrdersDTO newOrders) {
 		User email = userRepo.findByEmail(useremail);
 		Orders newO = new Orders();
@@ -37,21 +34,6 @@ public class OrdersService {
 		newO.setTotalprice(newOrders.getTotalprice());
 		newO.setOrdereddate(newOrders.getOrdereddate());
 
-		User userdetails = userRepo.findByEmail(useremail);
-
-		emailService.sendEmail(useremail, "Your Order Confirmation - Thank You for Your Purchase!", "Hi "
-				+ userdetails.getName() + "," + '\n' + '\n' + "Thank you for your order! " + '\n' + '\n'
-				+ "We’re excited to let you know that we’ve received your order and it’s now being processed. Below are the details of your purchase:"
-				+ '\n' + '\n' 
-				+ "Order Number: " + newOrders.getOrderid() + '\n' 
-				+ "Order Date: "+ newOrders.getOrdereddate() + '\n' + '\n' 
-				+ "Total Amount: "+newOrders.getTotalprice()
-				+ "We will notify you once your order has been shipped. If you have any questions or need further assistance, please visit our [Customer Care] for FAQs and guides.\r\n"
-				+ "\r\n"
-				+ "Thank you for shopping with us!\r\n"
-				+ "\r\n"
-				+ "Best regards,"+'\n'
-				+ "CRM App");
 		return repo.save(newO);
 	}
 
