@@ -44,7 +44,7 @@ public class CrmApplication {
 		SpringApplication.run(CrmApplication.class, args);
 	}
 
-	@Scheduled(cron = "0 */2 * ? * *")
+	@Scheduled(cron = "0 */10 * ? * *")
 	public void emailScheduler() {
 		List<Ticket> tickets = ticketRepo.findAll();
 
