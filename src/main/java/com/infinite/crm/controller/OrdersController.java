@@ -44,19 +44,20 @@ public class OrdersController {
 	    
 	    newOrders.setOrdereddate(formattedDate);
 	    
-	    User userdetails = userRepo.findByEmail(useremail);
-		emailService.sendEmail(useremail, "Your Order Confirmation - Thank You for Your Purchase!", "Hi "
-				+ userdetails.getName() + "," + '\n' + '\n' + "Thank you for your order! " + '\n' + '\n'
-				+ "We’re excited to let you know that we’ve received your order and it’s now being processed. Below are the details of your purchase:"
-				+ '\n' + '\n' 
-				+ "Order Date: "+ newOrders.getOrdereddate() + '\n' + '\n' 
-				+ "Total Amount: "+newOrders.getTotalprice()+ '\n' + '\n' 
-				+ "We will notify you once your order has been shipped. If you have any questions or need further assistance, please visit our [Customer Care] for FAQs and guides."
-				+ '\n'+ '\n'
-				+ "Thank you for shopping with us!"
-				+ '\n'
-				+ "Best regards,"+'\n'
-				+ "CRM App");
+		/*
+		 * User userdetails = userRepo.findByEmail(useremail);
+		 * emailService.sendEmail(useremail,
+		 * "Your Order Confirmation - Thank You for Your Purchase!", "Hi " +
+		 * userdetails.getName() + "," + '\n' + '\n' + "Thank you for your order! " +
+		 * '\n' + '\n' +
+		 * "We’re excited to let you know that we’ve received your order and it’s now being processed. Below are the details of your purchase:"
+		 * + '\n' + '\n' + "Order Date: "+ newOrders.getOrdereddate() + '\n' + '\n' +
+		 * "Total Amount: "+newOrders.getTotalprice()+ '\n' + '\n' +
+		 * "We will notify you once your order has been shipped. If you have any questions or need further assistance, please visit our [Customer Care] for FAQs and guides."
+		 * + '\n'+ '\n' + "Thank you for shopping with us!" + '\n' +
+		 * "Best regards,"+'\n' + "CRM App");
+		 */
+		System.out.println("Users Email is :"+useremail);
 		return service.addOrders(useremail,newOrders);
 	}
 	
