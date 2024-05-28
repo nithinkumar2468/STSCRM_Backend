@@ -25,27 +25,36 @@ import com.infinite.crm.service.UserService;
 @RequestMapping("api/n1")
 public class UserController {
 
-	private String loginlink = "https://master.dfhb2sx7j66q1.amplifyapp.com/login1";
-
-	private String adminEmail = "helpdesk.crm.info@gmail.com";
+	/*
+	 * private String loginlink =
+	 * "https://master.dfhb2sx7j66q1.amplifyapp.com/login1";
+	 * 
+	 * private String adminEmail = "helpdesk.crm.info@gmail.com";
+	 * 
+	 * @Autowired
+	private Email emailService;
+	 */
 
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private Email emailService;
+	
 
 	@PostMapping("/user")
 	User newUser(@RequestBody User newUser) {
-		emailService.sendEmail(newUser.getEmail(), " Welcome to CRM App - Your Registration Was Successful!", "Hi "
-				+ newUser.getName() + "," + '\n'+ '\n' + "Welcome to CRM!" + '\n'+ '\n'
-				+ "Your registration was successful, and you're now a part of our organization." + '\n' + '\n'
-				+ "Here are some quick steps to get you started:" + '\n' + "1. Log in to Your Account: " + loginlink
-				+ '\n'
-				+ "2. Explore Features: Check out our [Getting Started Guide] to learn about the powerful features we offer."
-				+ '\n' + '\n' + "If you need any help, our support team is here for you. You can reach us at "
-				+ adminEmail + " or visit our [Customer Care] for FAQs and guides." + '\n' + '\n' + "Best regards,"
-				+ '\n' + "CRM App");
+		/*
+		 * emailService.sendEmail(newUser.getEmail(),
+		 * " Welcome to CRM App - Your Registration Was Successful!", "Hi " +
+		 * newUser.getName() + "," + '\n'+ '\n' + "Welcome to CRM!" + '\n'+ '\n' +
+		 * "Your registration was successful, and you're now a part of our organization."
+		 * + '\n' + '\n' + "Here are some quick steps to get you started:" + '\n' +
+		 * "1. Log in to Your Account: " + loginlink + '\n' +
+		 * "2. Explore Features: Check out our [Getting Started Guide] to learn about the powerful features we offer."
+		 * + '\n' + '\n' +
+		 * "If you need any help, our support team is here for you. You can reach us at "
+		 * + adminEmail + " or visit our [Customer Care] for FAQs and guides." + '\n' +
+		 * '\n' + "Best regards," + '\n' + "CRM App");
+		 */
 		
 		return userService.save(newUser);
 	}
