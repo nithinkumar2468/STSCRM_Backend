@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,8 @@ import com.infinite.crm.service.OrdersService;
 @RequestMapping("api/n1")
 public class OrdersController {
 	
+	private Logger logger=LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private OrdersService service;
 	
@@ -35,7 +39,7 @@ public class OrdersController {
 	    
 	    newOrders.setOrdereddate(formattedDate);
 	    
-		System.out.println("Users Email is :"+useremail);
+	    logger.info("Users Email is :"+useremail);
 		return service.addOrders(useremail,newOrders);
 	}
 	
