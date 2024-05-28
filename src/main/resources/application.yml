@@ -1,0 +1,39 @@
+spring:
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: helpdesk.crm.capstone@gmail.com
+    password: ngaiiicgcstohtcw
+    port: '587'
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://monorail.proxy.rlwy.net:11316/railway
+    password: koCXMtSMofhtYkOMYbrFxRrThUsrDSBt
+  application:
+    name: crm-backend
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: 'false'
+    config:
+      enabled: false
+server:
+  port: '8080'
+
+currency-exchange-service:
+  ribbon:
+    eureka:
+      enabled: 'false'
+products2:
+  ribbon:
+    listofservers: https://stsproducts2-production.up.railway.app 
