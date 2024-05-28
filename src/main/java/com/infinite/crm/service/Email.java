@@ -20,7 +20,7 @@ public class Email {
     public void sendEmail(String toEmail, String subject, String body) {
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(toEmail);
-        mail.setFrom("helpdesk.crm.info@gmail.com");
+        mail.setFrom("helpdesk.crm.capstone@gmail.com");
         mail.setText(body);
         mail.setSubject(subject);
 
