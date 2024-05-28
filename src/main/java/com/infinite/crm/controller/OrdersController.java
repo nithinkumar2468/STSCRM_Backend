@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.infinite.crm.dto.OrdersDTO;
 import com.infinite.crm.model.Orders;
+import com.infinite.crm.service.Email;
 import com.infinite.crm.service.OrdersService;
 
 @RestController
@@ -29,6 +30,9 @@ public class OrdersController {
 	@Autowired
 	private OrdersService service;
 	
+	@Autowired
+	private Email emailService;
+	
 	@PostMapping("/{useremail}/order")
 	Orders newOrders(@PathVariable String useremail,@RequestBody OrdersDTO newOrders) {
 		
@@ -40,6 +44,9 @@ public class OrdersController {
 	    newOrders.setOrdereddate(formattedDate);
 	    
 	    logger.info("Users Email is :"+useremail);
+	    
+	    emailService.sendEmail(useremail,"Orders Placed Successfuly..!" ,"Thanks for your Order" );
+
 		return service.addOrders(useremail,newOrders);
 	}
 	
