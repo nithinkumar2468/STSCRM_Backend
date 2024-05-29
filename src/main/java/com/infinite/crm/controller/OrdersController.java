@@ -55,7 +55,7 @@ public class OrdersController {
 		logger.info(userdetails.getName());
 
 		emailService.sendEmail(useremail, "Your Order Confirmation - Thank You for Your Purchase!", "Hi "
-				+ "," + '\n' + '\n' + "Thank you for your order! " + '\n' + '\n'
+				
 				+ "We’re excited to let you know that we’ve received your order and it’s now being processed. Below are the details of your purchase:");
 
 		return service.addOrders(useremail, newOrders);
